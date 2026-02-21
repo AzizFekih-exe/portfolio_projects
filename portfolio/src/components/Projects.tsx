@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Database, Layers, Home, Shield } from 'lucide-react';
+import { ExternalLink, Github, Code, Database, Layers, Home, Shield, School } from 'lucide-react';
 
 const projects = [
   {
@@ -36,6 +36,13 @@ const projects = [
     tech: ['Django', 'Python', 'Scikit-learn', 'AI'],
     github: 'https://github.com/Molka5/SOS-village-Hackathon',
     icon: <Shield size={24} />
+  },
+  {
+    title: "TED University Executive Education",
+    description: "Developed a professional executive education platform for TED University. Features include multilingual support (i18n), responsive design with Tailwind CSS, and fluid animations for an enhanced learning experience.",
+    tech: ['React', 'TypeScript', 'Tailwind', 'i18next'],
+    github: 'https://github.com/AzizFekih-exe/Ted-University-Executive-Education',
+    icon: <School size={24} />
   }
 ];
 

@@ -73,7 +73,7 @@ const About = () => {
           <div className="grid grid-cols-2 gap-6 mt-12">
             <motion.div whileHover={{ y: -5 }} style={{ borderRadius: '2rem' }}>
               <div className="bg-glass futuristic-card glass-border-subtle" style={{ padding: '2rem', borderRadius: '2rem', height: '100%' }}>
-                <Counter value={5} suffix="+" color="var(--accent-primary)" />
+                <Counter value={6} suffix="+" color="var(--accent-primary)" />
                 <p style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280' }}>Advanced Systems Built</p>
               </div>
             </motion.div>
