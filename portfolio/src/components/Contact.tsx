@@ -144,15 +144,15 @@ const Contact = () => {
                   className="btn-primary"
                   style={{ width: '100%', justifyContent: 'center', padding: '1rem', fontSize: '1rem' }}
                 >
-                  {status === 'loading' ? 'Transmitting...' : status === 'success' ? 'Transmission Complete' : 'Establish Protocol'}
+                  {status === 'loading' ? 'Sending...' : status === 'success' ? 'Message Sent' : 'Send Message'}
                   {status === 'success' ? <CheckCircle size={18} /> : status === 'error' ? <AlertCircle size={18} /> : <Send size={18} />}
                 </button>
 
                 {status === 'success' && (
-                  <p style={{ color: '#10b981', fontSize: '0.85rem', fontWeight: 600, textAlign: 'center' }}>Protocol initialized successfully. I will respond shortly.</p>
+                  <p style={{ color: '#10b981', fontSize: '0.85rem', fontWeight: 600, textAlign: 'center' }}>Message sent successfully! I'll get back to you soon.</p>
                 )}
                 {status === 'error' && (
-                  <p style={{ color: '#f43f5e', fontSize: '0.85rem', fontWeight: 600, textAlign: 'center' }}>Transmission failed. Please attempt direct email connection.</p>
+                  <p style={{ color: '#f43f5e', fontSize: '0.85rem', fontWeight: 600, textAlign: 'center' }}>Something went wrong. Please try emailing me directly.</p>
                 )}
               </form>
             </div>

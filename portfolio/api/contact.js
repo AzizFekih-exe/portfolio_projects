@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -28,10 +28,11 @@ export default async function handler(req, res) {
   };
 
   try {
+    console.log('Attempting to send email via:', process.env.EMAIL_USER);
     await transporter.sendMail(mailOptions);
     return res.status(200).json({ message: 'Message transmitted successfully.' });
   } catch (error) {
-    console.error('Error sending email:', error);
-    return res.status(500).json({ error: 'Failed to transmit message. Please try again later.' });
+    console.error('SERVERLESS ERROR:', error.message);
+    return res.status(500).json({ error: `Failed to transmit: ${error.message}` });
   }
 }
