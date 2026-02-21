@@ -78,7 +78,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="mobile-menu bg-glass"
+            className="mobile-menu"
           >
             <div className="flex flex-col gap-6 p-8 items-center">
               {navItems.map((item) => (
