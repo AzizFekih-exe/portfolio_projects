@@ -72,13 +72,13 @@ const About = () => {
           
           <div className="grid grid-cols-2 gap-6 mt-12">
             <motion.div whileHover={{ y: -5 }} style={{ borderRadius: '2rem' }}>
-              <div className="bg-glass futuristic-card glass-border-subtle" style={{ padding: '2rem', borderRadius: '2rem', height: '100%' }}>
+              <div className="bg-glass futuristic-card glass-border-subtle responsive-card-padding" style={{ borderRadius: '2rem', height: '100%' }}>
                 <Counter value={6} suffix="+" color="var(--accent-primary)" />
                 <p style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280' }}>Advanced Systems Built</p>
               </div>
             </motion.div>
             <motion.div whileHover={{ y: -5 }} style={{ borderRadius: '2rem' }}>
-              <div className="bg-glass futuristic-card glass-border-subtle" style={{ padding: '2rem', borderRadius: '2rem', height: '100%' }}>
+              <div className="bg-glass futuristic-card glass-border-subtle responsive-card-padding" style={{ borderRadius: '2rem', height: '100%' }}>
                 <Counter value={5} prefix="Top " color="var(--accent-secondary)" />
                 <p style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280' }}>National Hackathon Rank</p>
               </div>
@@ -97,9 +97,8 @@ const About = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div
-                className="bg-glass futuristic-card glass-border-subtle"
+                className="bg-glass futuristic-card glass-border-subtle responsive-card-padding"
                 style={{
-                  padding: '1.75rem',
                   borderRadius: '1.5rem',
                   borderLeft: `2px solid ${skillGroup.color}`,
                   height: '100%'

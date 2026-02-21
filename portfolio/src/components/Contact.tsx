@@ -38,7 +38,7 @@ const Contact = () => {
         transition={{ duration: 0.8 }}
       >
         {/* Outer glass card — no overflow:hidden so top content isn't clipped */}
-        <div className="bg-glass glass-border-subtle" style={{ padding: '3.5rem 3rem', borderRadius: '2.5rem', position: 'relative' }}>
+        <div className="bg-glass glass-border-subtle contact-card-padding" style={{ borderRadius: '2.5rem', position: 'relative' }}>
           {/* Decorative glows — inside the card but behind content */}
           <div style={{ position: 'absolute', top: 0, right: 0, width: '400px', height: '400px', background: 'rgba(59,130,246,0.04)', filter: 'blur(100px)', pointerEvents: 'none', borderRadius: '50%' }} />
           <div style={{ position: 'absolute', bottom: 0, left: 0, width: '400px', height: '400px', background: 'rgba(139,92,246,0.04)', filter: 'blur(100px)', pointerEvents: 'none', borderRadius: '50%' }} />

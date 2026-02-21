@@ -73,9 +73,8 @@ const Projects = () => {
               style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
             >
               <div
-                className="bg-glass futuristic-card glass-border-subtle"
+                className="bg-glass futuristic-card glass-border-subtle responsive-card-padding"
                 style={{
-                  padding: '2rem 1.75rem 1.5rem',
                   borderRadius: '1.5rem',
                   flex: 1,
                   display: 'flex',

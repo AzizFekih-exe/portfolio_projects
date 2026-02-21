@@ -80,7 +80,7 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="mobile-menu bg-glass"
           >
-            <div className="flex flex-col gap-8 p-12 items-center">
+            <div className="flex flex-col gap-6 p-8 items-center">
               {navItems.map((item) => (
                 <a
                   key={item.name}

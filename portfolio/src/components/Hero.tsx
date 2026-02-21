@@ -23,7 +23,7 @@ const Hero = () => {
           </motion.div>
           
           <h1 className="gradient-text">
-            Engineering the <br />
+            Engineering the <span className="hidden-mobile"></span>
             <span style={{ color: 'var(--accent-primary)' }}>Future of Data.</span>
           </h1>
           
