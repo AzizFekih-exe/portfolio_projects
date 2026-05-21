@@ -44,6 +44,21 @@ const projects = [
     github: 'https://github.com/AzizFekih-exe/Ted-University-Executive-Education',
     icon: <School size={24} />
   }
+  ,
+  {
+    title: 'MeetWise — AI Scheduler',
+    description: 'An AI-driven scheduling assistant written in Kotlin. Integrates calendar heuristics and ML-driven suggestions to optimize meeting times and availability.',
+    tech: ['Kotlin', 'AI', 'Scheduler', 'JVM'],
+    github: 'https://github.com/AzizFekih-exe/MeetWise-AI-Scheduler',
+    icon: <Code size={24} />
+  },
+  {
+    title: 'Ransomware Simulator (Research)',
+    description: 'A controlled simulator implemented in Python for studying ransomware behaviors and testing defensive strategies in isolated lab environments.',
+    tech: ['Python', 'Security', 'Simulation', 'Research'],
+    github: 'https://github.com/AzizFekih-exe/ransomware-simulator',
+    icon: <Shield size={24} />
+  }
 ];
 
 const Projects = () => {
