@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Database, Layers, Home, Shield, School } from 'lucide-react';
+import { ExternalLink, Github, Code, Database, Layers, Home, Shield, School, Leaf } from 'lucide-react';
 
 const projects = [
   {
@@ -58,6 +58,13 @@ const projects = [
     tech: ['Python', 'Security', 'Simulation', 'Research'],
     github: 'https://github.com/AzizFekih-exe/ransomware-simulator',
     icon: <Shield size={24} />
+  },
+  {
+    title: 'GreenRoute-AI',
+    description: 'An Explainable, Human-in-the-Loop System for Green Solvent Substitution and Synthesis Optimisation.',
+    tech: ['React', 'Python', 'AI Agents', 'Optimization'],
+    github: 'https://github.com/AzizFekih-exe/GreenRoute-AI',
+    icon: <Leaf size={24} />
   }
 ];
 
