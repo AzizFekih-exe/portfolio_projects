@@ -1,137 +1,174 @@
-import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
-import { CheckCircle2, Cpu, Globe, Database, Code2 } from 'lucide-react';
-import { useEffect, useRef } from 'react';
-
-const Counter = ({ value, prefix = "", suffix = "", color }: { value: number; prefix?: string; suffix?: string; color: string }) => {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  useEffect(() => {
-    if (isInView) {
-      animate(count, value, { duration: 2, ease: "easeOut" });
-    }
-  }, [isInView, count, value]);
-
-  return (
-    <motion.h3 
-      ref={ref} 
-      style={{ fontSize: '3rem', color: color, lineHeight: 1, marginBottom: '0.75rem' }}
-    >
-      {prefix}<motion.span>{rounded}</motion.span>{suffix}
-    </motion.h3>
-  );
-};
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const skills = [
-  { 
-    category: 'Languages', 
-    icon: <Globe size={20} />, 
-    items: ['Python (Expert)', 'C++', 'TypeScript', 'SQL', 'JavaScript'],
-    color: 'var(--accent-primary)'
-  },
-  { 
-    category: 'Frameworks', 
-    icon: <Code2 size={20} />, 
-    items: ['FastAPI', 'Flask', 'React', 'Pandas', 'Next.js'],
-    color: 'var(--accent-secondary)'
-  },
-  { 
-    category: 'Specializations', 
-    icon: <Database size={20} />, 
-    items: ['API Design', 'BI Platforms', 'Data Engineering', 'Cloud Arch'],
-    color: '#10b981'
-  },
-  { 
-    category: 'Tools', 
-    icon: <Cpu size={20} />, 
-    items: ['Docker', 'Git', 'Linux', 'Vite', 'PostgreSQL'],
-    color: '#f59e0b'
-  }
+  { category: 'Languages', items: ['Python', 'C++', 'TypeScript', 'SQL', 'JavaScript', 'Kotlin'] },
+  { category: 'Frameworks', items: ['FastAPI', 'Flask', 'React', 'Django', 'Next.js', 'Pandas'] },
+  { category: 'Specializations', items: ['API Design', 'BI Platforms', 'Data Engineering', 'AI Systems'] },
+  { category: 'Tools', items: ['Docker', 'Git', 'Linux', 'PostgreSQL', 'Vite', 'Scikit-learn'] },
+];
+
+const stats = [
+  { value: '9+', label: 'Projects Shipped' },
+  { value: 'Top 5', label: 'National Hackathon' },
+  { value: '5+', label: 'Years Coding' },
+  { value: '∞', label: 'Curiosity' },
 ];
 
 const About = () => {
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
   return (
-    <section id="about" className="max-w-wide">
-      <div className="grid lg-grid-cols-2 gap-20 lg-gap-32 items-start">
+    <section ref={ref} id="about" style={{ padding: '7rem 1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Section label */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+        style={{
+          fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.15em',
+          textTransform: 'uppercase', color: 'var(--text-secondary)',
+          marginBottom: '1.5rem'
+        }}
+      >
+        Identity Profile
+      </motion.div>
+
+      {/* Headline */}
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        style={{
+          fontSize: 'clamp(2.5rem, 7vw, 5rem)',
+          fontWeight: 700,
+          letterSpacing: '-0.035em',
+          lineHeight: 1.05,
+          color: 'var(--text-primary)',
+          marginBottom: '5rem'
+        }}
+      >
+        Architecting Digital<br />
+        <span style={{ color: 'var(--text-secondary)' }}>Intelligence.</span>
+      </motion.h2>
+
+      {/* Two-column layout */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '4rem',
+        marginBottom: '5rem'
+      }}>
+        {/* Bio */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <div className="flex items-center gap-3 rounded-full px-4 py-1 bg-glass mb-8" style={{ width: 'fit-content', fontSize: '0.75rem', fontWeight: 800, color: 'var(--accent-primary)', border: '1px solid rgba(59, 130, 246, 0.2)', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--accent-primary)', display: 'inline-block' }}></span>
-            Identity Profile
-          </div>
-          <h2 className="gradient-text mb-6">Architecting Digital <br /><span style={{color: 'var(--accent-primary)'}}>Intelligence.</span></h2>
-          <p className="mb-12" style={{ fontSize: '1.25rem', color: 'var(--text-secondary)' }}>
-            I am a specialized developer focused on bridging the gap between sophisticated backend logic and actionable data insights. My approach combines the precision of high-performance engineering with the clarity of modern business intelligence.
+          <p style={{
+            fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
+            color: 'var(--text-secondary)',
+            lineHeight: 1.75,
+            marginBottom: '1.5rem'
+          }}>
+            I'm a specialized developer focused on bridging sophisticated backend logic with actionable data insights. My approach combines the precision of high-performance engineering with clarity of modern business intelligence.
           </p>
-          
-          <div className="grid grid-cols-2 gap-6 mt-12">
-            <motion.div whileHover={{ y: -5 }} style={{ borderRadius: '2rem' }}>
-              <div className="bg-glass futuristic-card glass-border-subtle responsive-card-padding" style={{ borderRadius: '2rem', height: '100%' }}>
-                <Counter value={6} suffix="+" color="var(--accent-primary)" />
-                <p style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280' }}>Advanced Systems Built</p>
-              </div>
-            </motion.div>
-            <motion.div whileHover={{ y: -5 }} style={{ borderRadius: '2rem' }}>
-              <div className="bg-glass futuristic-card glass-border-subtle responsive-card-padding" style={{ borderRadius: '2rem', height: '100%' }}>
-                <Counter value={5} prefix="Top " color="var(--accent-secondary)" />
-                <p style={{ fontSize: '0.6rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280' }}>National Hackathon Rank</p>
-              </div>
-            </motion.div>
-          </div>
+          <p style={{
+            fontSize: 'clamp(1rem, 1.5vw, 1.2rem)',
+            color: 'var(--text-secondary)',
+            lineHeight: 1.75,
+          }}>
+            From writing optimized C++ for API pipelines to building predictive BI dashboards — I ship systems that are both technically rigorous and immediately useful.
+          </p>
         </motion.div>
-        
-        <div className="grid grid-cols-1 md-grid-cols-2 gap-6">
-          {skills.map((skillGroup, i) => (
-            <motion.div
-              key={skillGroup.category}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              whileHover={{ scale: 1.02 }}
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '1px',
+            border: '1px solid var(--glass-border)',
+            borderRadius: '2rem',
+            overflow: 'hidden',
+            background: 'var(--glass-border)'
+          }}
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              style={{
+                padding: '2rem 1.5rem',
+                background: 'var(--card-bg)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.35rem',
+                transition: 'background-color 0.3s'
+              }}
             >
-              <div
-                className="bg-glass futuristic-card glass-border-subtle responsive-card-padding"
-                style={{
-                  borderRadius: '1.5rem',
-                  borderLeft: `2px solid ${skillGroup.color}`,
-                  height: '100%'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-                  <div style={{
-                    padding: '0.5rem',
-                    borderRadius: '0.625rem',
-                    background: 'rgba(255,255,255,0.05)',
-                    color: skillGroup.color,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}>
-                    {skillGroup.icon}
-                  </div>
-                  <h4 style={{ color: 'white', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
-                    {skillGroup.category}
-                  </h4>
-                </div>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                  {skillGroup.items.map((skill) => (
-                    <li key={skill} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', fontSize: '0.875rem', color: '#9ca3af', fontWeight: 500 }}>
-                      <CheckCircle2 size={14} style={{ color: skillGroup.color, opacity: 0.7, flexShrink: 0 }} />
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
+              <span style={{
+                fontSize: 'clamp(2rem, 4vw, 2.75rem)',
+                fontWeight: 700,
+                letterSpacing: '-0.04em',
+                color: 'var(--text-primary)',
+                lineHeight: 1
+              }}>
+                {stat.value}
+              </span>
+              <span style={{
+                fontSize: '0.65rem',
+                fontWeight: 600,
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                color: 'var(--text-secondary)'
+              }}>
+                {stat.label}
+              </span>
+            </div>
           ))}
-        </div>
+        </motion.div>
+      </div>
+
+      {/* Skills Grid */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '1rem'
+      }}>
+        {skills.map((group, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 + i * 0.08 }}
+            className="bento-card"
+            style={{ padding: '1.75rem' }}
+          >
+            <div style={{
+              fontSize: '0.65rem', fontWeight: 700,
+              letterSpacing: '0.12em', textTransform: 'uppercase',
+              color: 'var(--text-secondary)', marginBottom: '1.25rem'
+            }}>
+              {group.category}
+            </div>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              {group.items.map(item => (
+                <li key={item} style={{
+                  fontSize: '0.95rem',
+                  color: 'var(--text-primary)',
+                  fontWeight: 400,
+                  listStyle: 'none'
+                }}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

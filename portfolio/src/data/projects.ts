@@ -1,0 +1,178 @@
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  longDescription: string;
+  tech: string[];
+  github: string;
+  image: string;
+  accent: string;
+  span: 'wide' | 'tall' | 'normal';
+  highlights: { label: string; value: string }[];
+  gallery: string[];
+}
+
+export const projects: Project[] = [
+  {
+    id: 'boycott-api',
+    title: 'BoycottAPI',
+    description: 'Fast and reliable API infrastructure for automated data filtering. I built it using Python and C++ to handle high throughput.',
+    longDescription: 'I built BoycottAPI to handle automated data filtering and compliance checks quickly and efficiently. By pairing the flexibility of Python with the raw speed of C++ through Cython, I was able to push the system to achieve exceptional throughput. It features multi-threaded request handling, in-memory caching, and a clean REST API that easily hooks into existing workflows.',
+    tech: ['Python', 'C++', 'REST', 'Cython'],
+    github: 'https://github.com/AzizFekih-exe/BoycottAPI',
+    image: '/images/boycott.png',
+    accent: '#0a84ff',
+    span: 'wide',
+    highlights: [
+      { label: 'Language', value: 'Python + C++' },
+      { label: 'Type', value: 'REST API' },
+      { label: 'Performance', value: 'High Throughput' },
+      { label: 'Status', value: 'Active' },
+    ],
+    gallery: ['/images/boycott.png'],
+  },
+  {
+    id: 'shein-bi',
+    title: 'Shein Fashion BI',
+    description: 'A Business Intelligence platform I developed for global fashion analytics, featuring custom data pipelines and trend visualization.',
+    longDescription: 'This is a Business Intelligence platform I put together to analyze global fashion assortments for Shein. It includes end-to-end data processing pipelines built with Pandas, structured around a Star Schema database model so queries run fast. The goal was to give analysts a clear, visual way to spot market trends and pull actionable insights from hundreds of thousands of product listings.',
+    tech: ['Python', 'Pandas', 'Data Science', 'Jupyter'],
+    github: 'https://github.com/AzizFekih-exe/shein-fashion-assortment-bi',
+    image: '/images/shein-bi.png',
+    accent: '#ff375f',
+    span: 'normal',
+    highlights: [
+      { label: 'Data Volume', value: '100k+ Products' },
+      { label: 'Model', value: 'Star Schema' },
+      { label: 'Platform', value: 'Jupyter / Pandas' },
+      { label: 'Focus', value: 'Fashion Analytics' },
+    ],
+    gallery: ['/images/shein-bi.png'],
+  },
+  {
+    id: 'greenroute-ai',
+    title: 'GreenRoute-AI',
+    description: 'An AI system designed to help find eco-friendly chemical solvent alternatives and optimize synthesis.',
+    longDescription: 'GreenRoute-AI is an Explainable AI tool I created to help chemists find greener solvent alternatives. It uses a Human-in-the-Loop approach, where AI agents suggest eco-friendly options and actually explain the reasoning behind their choices. I built the frontend with React and the backend with Python to bridge the gap between chemical engineering and practical machine learning.',
+    tech: ['React', 'Python', 'AI Agents', 'XAI'],
+    github: 'https://github.com/AzizFekih-exe/GreenRoute-AI',
+    image: '/images/greenroute.png',
+    accent: '#30d158',
+    span: 'normal',
+    highlights: [
+      { label: 'AI Type', value: 'Explainable AI' },
+      { label: 'Workflow', value: 'Human-in-the-Loop' },
+      { label: 'Domain', value: 'Green Chemistry' },
+      { label: 'Stack', value: 'React + Python' },
+    ],
+    gallery: ['/images/greenroute.png'],
+  },
+  {
+    id: 'meetwise',
+    title: 'MeetWise AI Scheduler',
+    description: 'A smart scheduling assistant built in Kotlin that uses machine learning to find the best meeting times.',
+    longDescription: 'MeetWise is a scheduling assistant I wrote in Kotlin for the JVM. It looks at calendar heuristics and uses machine learning to suggest the best times for meetings, helping to cut down on conflicts and keep days productive. The cool part is that it learns from how you schedule things over time and gets better at making recommendations.',
+    tech: ['Kotlin', 'AI', 'JVM', 'ML'],
+    github: 'https://github.com/AzizFekih-exe/MeetWise-AI-Scheduler',
+    image: '/images/meetwise.png',
+    accent: '#ffd60a',
+    span: 'normal',
+    highlights: [
+      { label: 'Language', value: 'Kotlin / JVM' },
+      { label: 'AI Feature', value: 'Scheduling ML' },
+      { label: 'Platform', value: 'Android / Desktop' },
+      { label: 'Type', value: 'Productivity App' },
+    ],
+    gallery: ['/images/meetwise.png'],
+  },
+  {
+    id: 'ransomware-simulator',
+    title: 'Ransomware Simulator',
+    description: 'A Python-based simulator I created to study how ransomware behaves in a safe, isolated lab environment.',
+    longDescription: 'I built this ransomware simulator purely in Python to help with academic research and defensive security training. It is designed to run safely inside isolated VMs, letting researchers safely study encryption patterns, dropper behaviors, kill-switches, and recovery methods. I made sure every phase was thoroughly unit-tested and well documented.',
+    tech: ['Python', 'Security', 'Simulation', 'Research'],
+    github: 'https://github.com/AzizFekih-exe/ransomware-simulator',
+    image: '/images/ransomware.png',
+    accent: '#ff453a',
+    span: 'wide',
+    highlights: [
+      { label: 'Environment', value: 'Isolated VM Only' },
+      { label: 'Purpose', value: 'Academic Research' },
+      { label: 'Language', value: 'Python' },
+      { label: 'Phases', value: '3 Research Phases' },
+    ],
+    gallery: ['/images/ransomware.png'],
+  },
+  {
+    id: 'sos-village',
+    title: "SOS Village Management",
+    description: 'An incident reporting platform built with AI to automatically classify the urgency of reports.',
+    longDescription: "I developed this platform during a national hackathon to help the staff at SOS Children's Village manage incident reports. The backend relies on Scikit-learn to automatically figure out how urgent an incident is, which helps staff triage issues much faster. It also features real-time notifications and a clean Django admin dashboard so coordinators can respond quickly to what is happening on the ground.",
+    tech: ['Django', 'Python', 'Scikit-learn', 'AI'],
+    github: 'https://github.com/Molka5/SOS-village-Hackathon',
+    image: '/images/sos-village.png',
+    accent: '#bf5af2',
+    span: 'normal',
+    highlights: [
+      { label: 'Event', value: 'National Hackathon' },
+      { label: 'Rank', value: 'Top 5 Nationally' },
+      { label: 'AI Model', value: 'Scikit-learn' },
+      { label: 'Backend', value: 'Django' },
+    ],
+    gallery: ['/images/sos-village.png'],
+  },
+  {
+    id: 'ted-university',
+    title: 'TED University Exec Ed',
+    description: 'An executive education platform with smooth animations and full multilingual support.',
+    longDescription: 'This is an executive education platform I built for TED University. I focused on delivering a premium learning experience, so it features smooth micro-animations, clean course layouts, and built-in progress tracking. It also has full multilingual support using i18next, making it accessible to a wider range of professionals while keeping a polished, institutional look.',
+    tech: ['React', 'TypeScript', 'Tailwind', 'i18next'],
+    github: 'https://github.com/AzizFekih-exe/Ted-University-Executive-Education',
+    image: '/images/ted-university.png',
+    accent: '#0a84ff',
+    span: 'normal',
+    highlights: [
+      { label: 'Client', value: 'TED University' },
+      { label: 'i18n', value: 'Multi-language' },
+      { label: 'Stack', value: 'React + TypeScript' },
+      { label: 'Type', value: 'Education Platform' },
+    ],
+    gallery: ['/images/ted-university.png'],
+  },
+  {
+    id: 'smart-home',
+    title: 'Smart Home Controller',
+    description: 'A smart home management system written in Java that tracks energy use and automates devices.',
+    longDescription: 'I built this smart home controller in Java, focusing heavily on solid object-oriented design. It lets you organize devices room by room, set up event-driven automation rules, and keep an eye on everything through a real-time energy monitoring dashboard. I also made it highly extensible, so you can easily plug in new device types without having to touch the core codebase.',
+    tech: ['Java', 'OOP', 'Automation', 'Energy'],
+    github: 'https://github.com/AzizFekih-exe/Smart-Home-Project--patch-1.1-',
+    image: '/images/smart-home.png',
+    accent: '#64d2ff',
+    span: 'normal',
+    highlights: [
+      { label: 'Language', value: 'Java' },
+      { label: 'Architecture', value: 'OOP / Plugins' },
+      { label: 'Feature', value: 'Energy Monitoring' },
+      { label: 'Type', value: 'IoT Controller' },
+    ],
+    gallery: ['/images/smart-home.png'],
+  },
+  {
+    id: 'portfolio',
+    title: 'Modern Portfolio',
+    description: 'My personal portfolio website, featuring an Apple-inspired bento grid and smooth scroll animations.',
+    longDescription: 'You are looking at it! I built this portfolio from scratch using React, TypeScript, Vite, and Framer Motion. I wanted an Apple-inspired aesthetic, so I incorporated a bento-grid layout, cinematic scroll animations, and a frosted-glass navigation bar. It includes real-time light and dark theme switching and is fully responsive across all devices.',
+    tech: ['React', 'TypeScript', 'Framer Motion', 'Vite'],
+    github: 'https://github.com/AzizFekih-exe',
+    image: '/images/portfolio-site.png',
+    accent: '#86868b',
+    span: 'wide',
+    highlights: [
+      { label: 'Stack', value: 'React + TypeScript' },
+      { label: 'Animation', value: 'Framer Motion' },
+      { label: 'Design', value: 'Apple-esque' },
+      { label: 'Status', value: 'You are here' },
+    ],
+    gallery: ['/images/portfolio-site.png'],
+  },
+];

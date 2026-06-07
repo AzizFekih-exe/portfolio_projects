@@ -1,164 +1,182 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code, Database, Layers, Home, Shield, School, Leaf } from 'lucide-react';
-
-const projects = [
-  {
-    title: 'BoycottAPI',
-    description: 'A high-performance API infrastructure built for automated data filtering and organizational compliance. Implemented using Python and C++ for optimal speed.',
-    tech: ['Python', 'C++', 'REST', 'Cython'],
-    github: 'https://github.com/AzizFekih-exe/BoycottAPI',
-    icon: <Database size={24} />
-  },
-  {
-    title: 'Shein Fashion BI',
-    description: 'Business Intelligence platform for analyzing global fashion assortments. Features data processing pipelines and visualization of market trends.',
-    tech: ['Python', 'Jupyter', 'Pandas', 'Data Science'],
-    github: 'https://github.com/AzizFekih-exe/shein-fashion-assortment-bi',
-    icon: <Layers size={24} />
-  },
-  {
-    title: 'Modern Portfolio',
-    description: 'A high-end, responsive portfolio website showcasing IT projects with professional grade animations and design patterns.',
-    tech: ['React', 'TypeScript', 'Framer Motion', 'Vite'],
-    github: 'https://github.com/AzizFekih-exe',
-    icon: <Code size={24} />
-  },
-  {
-    title: 'Smart Home Controller',
-    description: 'A comprehensive Java-based smart home management system featuring room organization, automated device control, and real-time energy monitoring.',
-    tech: ['Java', 'OOP', 'Automation', 'Energy Monitoring'],
-    github: 'https://github.com/AzizFekih-exe/Smart-Home-Project--patch-1.1-',
-    icon: <Home size={24} />
-  },
-  {
-    title: "SOS Children's Village Management",
-    description: 'An AI-powered incident reporting and management platform for SOS Villages. Features automated urgency classification using Scikit-learn and real-time notifications.',
-    tech: ['Django', 'Python', 'Scikit-learn', 'AI'],
-    github: 'https://github.com/Molka5/SOS-village-Hackathon',
-    icon: <Shield size={24} />
-  },
-  {
-    title: "TED University Executive Education",
-    description: "Developed a professional executive education platform for TED University. Features include multilingual support (i18n), responsive design with Tailwind CSS, and fluid animations for an enhanced learning experience.",
-    tech: ['React', 'TypeScript', 'Tailwind', 'i18next'],
-    github: 'https://github.com/AzizFekih-exe/Ted-University-Executive-Education',
-    icon: <School size={24} />
-  }
-  ,
-  {
-    title: 'MeetWise — AI Scheduler',
-    description: 'An AI-driven scheduling assistant written in Kotlin. Integrates calendar heuristics and ML-driven suggestions to optimize meeting times and availability.',
-    tech: ['Kotlin', 'AI', 'Scheduler', 'JVM'],
-    github: 'https://github.com/AzizFekih-exe/MeetWise-AI-Scheduler',
-    icon: <Code size={24} />
-  },
-  {
-    title: 'Ransomware Simulator (Research)',
-    description: 'A controlled simulator implemented in Python for studying ransomware behaviors and testing defensive strategies in isolated lab environments.',
-    tech: ['Python', 'Security', 'Simulation', 'Research'],
-    github: 'https://github.com/AzizFekih-exe/ransomware-simulator',
-    icon: <Shield size={24} />
-  },
-  {
-    title: 'GreenRoute-AI',
-    description: 'An Explainable, Human-in-the-Loop System for Green Solvent Substitution and Synthesis Optimisation.',
-    tech: ['React', 'Python', 'AI Agents', 'Optimization'],
-    github: 'https://github.com/AzizFekih-exe/GreenRoute-AI',
-    icon: <Leaf size={24} />
-  }
-];
+import { Github, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { projects } from '../data/projects';
+import ScrollGallery from './ScrollGallery';
 
 const Projects = () => {
+  // We show a featured bento grid of 5 and a scroll gallery for the rest
+  const featured = projects.slice(0, 5);
+  const rest = projects.slice(5);
+
   return (
-    <section id="projects" className="max-w-wide text-center lg-text-left">
+    <section id="projects" style={{ padding: '7rem 1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
       >
-        <div className="flex items-center gap-3 rounded-full px-4 py-1 bg-glass mb-8" style={{ width: 'fit-content', fontSize: '0.75rem', fontWeight: 800, color: 'var(--accent-primary)', border: '1px solid rgba(59, 130, 246, 0.2)', textTransform: 'uppercase', letterSpacing: '0.15em', margin: '0 auto lg:0' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--accent-primary)', display: 'inline-block' }}></span>
-            Project Repositories
-          </div>
-        <h2 className="gradient-text">Featured <span style={{color: 'var(--accent-primary)'}}>Systems.</span></h2>
-        
-        <div className="grid md-grid-cols-2 lg-grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              whileHover={{ y: -10 }}
-              style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
-            >
-              <div
-                className="bg-glass futuristic-card glass-border-subtle responsive-card-padding"
+        {/* Section label */}
+        <div style={{
+          fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.15em',
+          textTransform: 'uppercase', color: 'var(--text-secondary)',
+          marginBottom: '1.5rem'
+        }}>
+          Project Repositories
+        </div>
+
+        <h2 style={{
+          fontSize: 'clamp(2.5rem, 7vw, 5rem)', fontWeight: 700,
+          letterSpacing: '-0.035em', lineHeight: 1.05,
+          color: 'var(--text-primary)', marginBottom: '3rem'
+        }}>
+          Featured Systems.
+        </h2>
+
+        {/* --- BENTO GRID (featured 5) --- */}
+        {/*
+          Layout (2-col grid, rows auto):
+          Row 1: [BoycottAPI WIDE - spans 2]
+          Row 2: [Shein BI] [GreenRoute-AI]
+          Row 3: [MeetWise] [Ransomware WIDE spans 2 → becomes row 3 col 1-2]
+          We manually assign grid positions for perfect fit.
+        */}
+        <div className="bento-grid">
+          {featured.map((project, index) => {
+            const isWide = project.span === 'wide';
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ delay: index * 0.07, duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                whileHover={{ scale: 1.015 }}
+                className={`bento-grid-item ${isWide ? 'wide' : ''}`}
                 style={{
-                  borderRadius: '1.5rem',
-                  flex: 1,
+                  borderRadius: '2rem',
+                  background: 'var(--card-bg)',
+                  border: '1px solid var(--glass-border)',
+                  overflow: 'hidden',
+                  position: 'relative',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  textAlign: 'left'
+                  justifyContent: 'flex-end',
+                  cursor: 'pointer',
+                  transition: 'border-color 0.3s, background-color 0.3s',
                 }}
+                onMouseEnter={e => ((e.currentTarget as HTMLElement).style.borderColor = 'var(--card-hover-border)')}
+                onMouseLeave={e => ((e.currentTarget as HTMLElement).style.borderColor = 'var(--glass-border)')}
               >
-                <div>
-                  {/* Icon */}
-                  <div style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '3rem',
-                    height: '3rem',
-                    borderRadius: '0.875rem',
-                    background: 'rgba(59, 130, 246, 0.1)',
-                    color: '#3b82f6',
-                    marginBottom: '1.25rem',
-                    border: '1px solid rgba(59, 130, 246, 0.15)'
-                  }}>
-                    {project.icon}
-                  </div>
+                {/* Clickable overlay for routing */}
+                <Link
+                  to={`/project/${project.id}`}
+                  style={{ position: 'absolute', inset: 0, zIndex: 2 }}
+                  aria-label={`View ${project.title}`}
+                />
 
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '0.6rem' }}>
+                {/* Image */}
+                {project.image && (
+                  <div
+                    className="card-image"
+                    style={{
+                      backgroundImage: `url(${project.image})`,
+                    }}
+                  />
+                )}
+
+                {/* Bottom gradient */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'var(--card-gradient)',
+                  pointerEvents: 'none'
+                }} />
+
+                {/* Accent glow */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: `radial-gradient(ellipse 70% 50% at 50% 100%, ${project.accent}18 0%, transparent 70%)`,
+                  pointerEvents: 'none'
+                }} />
+
+                {/* Content */}
+                <div style={{ position: 'relative', padding: '2rem', zIndex: 1 }}>
+                  <div style={{
+                    width: '22px', height: '2px', borderRadius: '2px',
+                    backgroundColor: project.accent, marginBottom: '0.75rem'
+                  }} />
+                  <h3 style={{
+                    fontSize: 'clamp(1rem, 2vw, 1.3rem)', fontWeight: 600,
+                    color: '#ffffff', letterSpacing: '-0.02em', marginBottom: '0.4rem'
+                  }}>
                     {project.title}
                   </h3>
-                  <p style={{ fontSize: '0.85rem', lineHeight: 1.7, color: 'var(--text-secondary)', marginBottom: '1.25rem' }}>
+                  <p style={{
+                    fontSize: '0.875rem', color: 'rgba(255,255,255,0.72)',
+                    lineHeight: 1.5, marginBottom: '1.25rem',
+                    maxWidth: isWide ? '540px' : '320px'
+                  }}>
                     {project.description}
                   </p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
-                    {project.tech.map((t) => (
-                      <span key={t} style={{
-                        padding: '0.2rem 0.65rem',
-                        borderRadius: '9999px',
-                        fontSize: '0.6rem',
-                        fontWeight: 800,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.1em',
-                        background: 'rgba(255,255,255,0.04)',
-                        color: 'var(--text-primary)',
-                        border: '1px solid var(--glass-border)'
-                      }}>
-                        {t}
-                      </span>
-                    ))}
+
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+                    {/* Tech tags */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                      {project.tech.map(t => (
+                        <span key={t} style={{
+                          padding: '0.2rem 0.6rem', borderRadius: '9999px',
+                          fontSize: '0.6rem', fontWeight: 600,
+                          textTransform: 'uppercase', letterSpacing: '0.06em',
+                          background: 'rgba(255,255,255,0.12)',
+                          color: 'rgba(255,255,255,0.85)',
+                          border: '1px solid rgba(255,255,255,0.18)'
+                        }}>
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Links — stop propagation so they don't clash with the Link overlay */}
+                    <div style={{ display: 'flex', gap: '1rem', zIndex: 3, position: 'relative' }}>
+                      <a href={project.github} target="_blank" rel="noopener noreferrer"
+                        onClick={e => e.stopPropagation()}
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
+                        onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
+                      >
+                        <Github size={13} /> Source
+                      </a>
+                      <Link to={`/project/${project.id}`}
+                        onClick={e => e.stopPropagation()}
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
+                        onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
+                      >
+                        <ExternalLink size={13} /> Details
+                      </Link>
+                    </div>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '1.25rem', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1rem' }}>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="nav-social-icon" style={{ fontSize: '0.8rem', gap: '0.4rem', textDecoration: 'none', fontWeight: 700 }}>
-                    <Github size={15} /> Source
-                  </a>
-                  <a href="#" className="nav-social-icon" style={{ fontSize: '0.8rem', gap: '0.4rem', textDecoration: 'none', fontWeight: 700 }}>
-                    <ExternalLink size={15} /> Prototype
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* --- HORIZONTAL SCROLL GALLERY (remaining projects) --- */}
+        <div style={{ marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '2rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <h3 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 600, letterSpacing: '-0.025em', color: 'var(--text-primary)' }}>
+              More Projects
+            </h3>
+          </div>
         </div>
       </motion.div>
+
+      {/* Scroll gallery — outside the motion div so it fills edge-to-edge */}
+      <div style={{ marginLeft: '-1.5rem', marginRight: '-1.5rem' }}>
+        <ScrollGallery projects={rest} />
+      </div>
     </section>
   );
 };
